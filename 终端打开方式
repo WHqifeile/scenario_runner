@@ -1,0 +1,9 @@
+终端里面打开carla
+
+cd ~/下载/CARLA_0.9.16
+./CarlaUE4.sh 
+
+新建一个终端
+
+source ~/carla_env/bin/activate
+python3 /home/zhang/接管场景生成/pmanual_pedestrian_scenario.py
