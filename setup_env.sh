@@ -9,8 +9,19 @@ CARLA_ROOT=/home/zhang/下载/CARLA_0.9.16
 # 设置Scenario Runner根目录
 SCENARIO_RUNNER_ROOT=/home/zhang/scenario_runner
 
-# 查找carla的egg文件，因为可能版本和Python版本不同，这里使用通配符
-EGG_FILE=$(ls $CARLA_ROOT/下载/CARLA_0.9.16/PythonAPI/carla/dist/carla-0.9.16-cp310-cp310-manylinux_2_31_x86_64.whl | head -1)
+# 设置 EGG 文件路径。注意：Scenario Runner 通常需要的是 .egg 文件，而不是 .whl 文件。
+# 使用通配符 * 来匹配版本和 Python 编译版本。
+EGG_FILE=$(ls $CARLA_ROOT/PythonAPI/carla/dist/carla-*-py3.10-*.egg 2>/dev/null)
+
+# 如果找不到 .egg，尝试查找 .whl (某些安装可能只有 .whl)
+if [ -z "$EGG_FILE" ]; then
+    EGG_FILE=$(ls $CARLA_ROOT/PythonAPI/carla/dist/*.whl 2>/dev/null)
+fi
+
+# 检查是否找到文件
+if [ -z "$EGG_FILE" ]; then
+    echo "错误: 无法在 $CARLA_ROOT/PythonAPI/carla/dist/ 中找到 CARLA Python 包 (.egg 或 .whl)。请检查 CARLA 安装版本和 Python 版本是否匹配。"
+fi
 
 # 设置PYTHONPATH
 export PYTHONPATH=$PYTHONPATH:$EGG_FILE

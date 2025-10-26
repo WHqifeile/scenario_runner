@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<routes>
+    <route id="0" town="Town04">
+        <waypoints>
+            <waypoint x="350" y="-200" z="0.3" />
+            <waypoint x="100" y="-200" z="0.3" />
+        </waypoints>
+    </route>
+
+    <scenario 
+        name="MyCustomTakeoverScenario" 
+        type="SuddenCutInScenario"  
+        trigger_point_x="300.0" 
+        trigger_point_y="-200.0" 
+        trigger_point_z="0.3">
+
+        <other_parameters
+            target_speed="12.0"
+            trigger_distance="40.0"
+            cut_in_distance="8.0"
+        />
+    </scenario> 
+</routes>

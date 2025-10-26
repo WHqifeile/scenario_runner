@@ -7,3 +7,29 @@ cd ~/下载/CARLA_0.9.16
 
 source ~/carla_env/bin/activate
 python3 /home/zhang/接管场景生成/pmanual_pedestrian_scenario.py
+
+
+
+#这个是使用手动控制在开一个终端
+python /home/zhang/下载/CARLA_0.9.16/PythonAPI/examples/manual_control.py --rolename hero
+
+#切换场景，展开 srunner/examples 文件夹击打开 NoSignalJunction.xml 文件，把它当作新的“菜单”。
+
+在文件内容中，找到您想运行的那个 <scenario> 标签
+<scenarios>
+    <scenario name="NoSignalJunctionScenario" type="NoSignalJunctionCross" town="Town03">
+        <!-- ... -->
+    </scenario>
+</scenarios>
+
+
+#carla端口被占用
+1.列出所有的端口
+sudo lsof -i :2000
+接下来会出现：
+COMMAND     PID    USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+CarlaUE4  12345   zhang   8u  IPv4 135790      0t0  TCP *:2000 (LISTEN)
+```    *   `COMMAND`: 程序的名字，这里应该是 `CarlaUE4`。
+*   `PID`: **这是最关键的信息！** 它是进程的ID号，在这个例子里是 `12345`。
+在同一个终端里面结束再打开
+sudo kill -9 12345
