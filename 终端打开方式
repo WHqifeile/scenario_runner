@@ -3,6 +3,12 @@
 cd ~/下载/CARLA_0.9.16
 ./CarlaUE4.sh 
 
+
+
+source ~/carla_env/bin/activate
+cd ~/下载/CARLA_0.9.16
+python3 PythonAPI/util/config.py -m Town04
+
 新建一个终端
 
 source ~/carla_env/bin/activate
@@ -13,6 +19,7 @@ python3 /home/zhang/接管场景生成/pmanual_pedestrian_scenario.py
 #这个是使用手动控制在开一个终端
 python /home/zhang/下载/CARLA_0.9.16/PythonAPI/examples/manual_control.py --rolename hero
 
+python /home/zhang/下载/CARLA_0.9.16/PythonAPI/examples/start_at_trigger.py --rolename hero
 #切换场景，展开 srunner/examples 文件夹击打开 NoSignalJunction.xml 文件，把它当作新的“菜单”。
 
 在文件内容中，找到您想运行的那个 <scenario> 标签
