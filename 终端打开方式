@@ -16,6 +16,15 @@ python3 /home/zhang/接管场景生成/pmanual_pedestrian_scenario.py
 
 
 
+# 在终端2
+# 注意目录是 CARLA 的 examples 目录
+cd ~/下载/CARLA_0.9.16/PythonAPI/examples/
+source /home/zhang/carla_env/bin/activate
+# -n 10 代表10辆车, -w 5 代表5个行人。没有 --map 参数！
+python generate_traffic.py -n 10 -w 5 --tm-port 8000
+
+
+
 #这个是使用手动控制在开一个终端
 python /home/zhang/下载/CARLA_0.9.16/PythonAPI/examples/manual_control.py --rolename hero
 
