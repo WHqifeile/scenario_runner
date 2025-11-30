@@ -4,22 +4,18 @@ cd ~/download/CARLA_0.9.16
 
 ~/.bashrc
 
-
+python scenario_runner.py --openscenario /home/zhang/下载/scenario_runner/srunner/examples/FollowLeadingVehicle.xosc --reloadWorld 
 
 # 在终端2
 # 注意目录是 CARLA 的 examples 目录
-cd ~/下载/CARLA_0.9.16/PythonAPI/examples/
+cd ~/download/CARLA_0.9.16/PythonAPI/examples/
 source /home/zhang/carla_env/bin/activate
 # -n 10 代表10辆车, -w 5 代表5个行人。没有 --map 参数！
 python generate_traffic.py -n 10 -w 5 --tm-port 8000
 
 
 
-#这个是使用手动控制在开一个终端
-python /home/zhang/下载/CARLA_0.9.16/PythonAPI/examples/manual_control.py --rolename hero
-
-python /home/zhang/下载/CARLA_0.9.16/PythonAPI/examples/start_at_trigger.py --rolename hero
-#切换场景，展开 srunner/examples 文件夹击打开 NoSignalJunction.xml 文件，把它当作新的“菜单”。
+python /home/zhang/下载/scenario_runner/manual_control.py --rolename hero
 
 在文件内容中，找到您想运行的那个 <scenario> 标签
 <scenarios>
